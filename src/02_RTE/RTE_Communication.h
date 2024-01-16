@@ -1,7 +1,7 @@
 #ifndef _RTE_COMMUNICATION_H_
 #define _RTE_COMMUNICATION_H_
 
-#include "Types.h"
+#include "GLOBALS_Types.h"
 
 /**
  * @brief Initialize communication run time service
@@ -10,5 +10,14 @@
  */
 void RTE_Communication_Init(void);
 
+/*
+SendHello
+ListenToHelloAnswer
+
+SendMeterDataReadoutRequest
+SetMeterDataRxBaudRate
+ListenToMeterData
+ResetBaudRate
+*/
 
 #endif //_RTE_COMMUNICATION_H_

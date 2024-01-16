@@ -1,7 +1,7 @@
 #ifndef _DRV_UART_H_
 #define _DRV_UART_H_
 
-#include "Types.h"
+#include "GLOBALS_Types.h"
 
 
 /**
@@ -11,5 +11,17 @@
  */
 void DRV_Uart_Init(void);
 
-
+/*
+RegisterRxBuffer
+ClearRxBuffer
+SetBaudRate
+RegisterCallbackOnRxDone
+RegisterCallbackOnTxDone
+Send
+EnableTx
+DisableTx
+EnableRx
+DisableRx
+SetRxEndCharacter
+*/
 #endif //_DRV_UART_H_

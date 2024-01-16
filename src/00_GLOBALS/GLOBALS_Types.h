@@ -1,5 +1,5 @@
-#ifndef _TYPES_H_
-#define _TYPES_H_
+#ifndef _GLOBALS_TYPES_H_
+#define _GLOBALS_TYPES_H_
 
 #include <math.h>
 
@@ -90,4 +90,4 @@ static const bool true = 1;
 #define TESTABLE_STATIC static
 #endif
 
-#endif // _TYPES_H_
+#endif // _GLOBALS_TYPES_H_
