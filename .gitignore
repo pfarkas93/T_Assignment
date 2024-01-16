@@ -1,1 +1,4 @@
 build/
+build/artifacts/test/report.xml
+build/test/cache/defines_dependency.yml
+build/test/results/TestDRV_Uart.pass

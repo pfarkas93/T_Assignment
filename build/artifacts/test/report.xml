@@ -3,7 +3,7 @@
 	<FailedTests/>
 	<SuccessfulTests>
 		<Test id="1">
-			<Name>test/01_DRV/TestDRV_Uart.c::test_Given_WhenUartInitCalled_ThenExpect</Name>
+			<Name>test/02_RTE/TestRTE_Communication.c::test_Given_WhenCommunicationInitCalled_ThenExpect</Name>
 		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>

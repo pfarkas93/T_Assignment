@@ -1,3 +1,5 @@
 ---
 src/01_DRV/DRV_Uart.c:
 - TEST
+src/02_RTE/RTE_Communication.c:
+- TEST
