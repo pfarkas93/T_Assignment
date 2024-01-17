@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "globals_types.h": "c"
+        "globals_types.h": "c",
+        "drv_uart.h": "c",
+        "stdbool.h": "c"
     }
 }

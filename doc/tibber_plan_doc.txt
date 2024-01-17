@@ -5,3 +5,16 @@ A string will be sent, then the computer can parse it properly.
 
 
 
+
+Error handling:
+-checking pointers against NULL
+-error message to the task OR functions always return error code...
+
+TX and RX:
+- timeout should be set
+- RX can be monitored with a timer
+
+
+
+
+

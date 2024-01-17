@@ -10,8 +10,8 @@ typedef unsigned char uint8_t;
 
 #ifndef __cplusplus
 typedef unsigned char bool;
-static const bool false = 0;
-static const bool true = 1;
+#define false (bool) 0
+#define true  (bool) 1
 #endif
 
 // Application Special Value Definitions

@@ -8,15 +8,28 @@ TESTABLE_STATIC volatile uint16_t SV_rxBufferSizeInBytes = 0u;
 TESTABLE_STATIC volatile uint16_t SV_rxBufferIterator = 0u;
 TESTABLE_STATIC volatile uint8_t SV_rxEndCharacter = 0u;
 
+TESTABLE_STATIC volatile uint8_t* SV_txData = NULL;
+TESTABLE_STATIC volatile uint16_t SV_txDataSizeInBytes = 0u;
+TESTABLE_STATIC volatile uint16_t SV_txDataIterator = 0u;
+
+TESTABLE_STATIC volatile RxDoneUartCallbackFunction_t SV_rxDoneCallback = NULL;
+TESTABLE_STATIC volatile TxDoneUartCallbackFunction_t SV_txDoneCallback = NULL;
+
 TESTABLE_STATIC uint16_t S_mockUartBaudRate = 0u;
+TESTABLE_STATIC uint8_t S_mockUartTxRegister = 0u;
+TESTABLE_STATIC bool S_mockIsTxBufferEmptyInterruptEnabled = false;
+TESTABLE_STATIC bool S_mockIsRxBufferNotEmptyInterruptEnabled = false;
+
 
 /************************************/
 /*Local function definitions********/
 /**********************************/
-static void DRV_Uart_EnableTx(void);
-static void DRV_Uart_DisableTx(void);
-static void DRV_Uart_EnableRx(void);
-static void DRV_Uart_DisableRx(void);
+static void EnableTx(void);
+static void DisableTx(void);
+static void EnableRx(void);
+static void DisableRx(void);
+
+static void TxInterruptRoutine(void);
 /************************************/
 /*Global functions******************/
 /**********************************/
@@ -45,25 +58,77 @@ void DRV_Uart_ClearRxBuffer(void)
 
 void DRV_Uart_SetBaudRate(uint16_t newBaudRate)
 {
+    /* First disable UART */
 
+    S_mockUartBaudRate = newBaudRate;
+
+    /* Enable UART (restart with new baud settings) */
 }
 
 void DRV_Uart_RegisterCallbackOnRxDone(RxDoneUartCallbackFunction_t rxDoneCallback)
 {
-
+    SV_rxDoneCallback = rxDoneCallback;
 }
 
 void DRV_Uart_RegisterCallbackOnTxDone(TxDoneUartCallbackFunction_t txDoneCallback)
 {
-
+    SV_txDoneCallback = txDoneCallback;
 }
 
 void DRV_Uart_Send(uint8_t* txDataAddress, uint16_t txDataSizeInBytes)
 {
-    
+    SV_txData = txDataAddress;
+    SV_txDataSizeInBytes = txDataSizeInBytes;
+    SV_txDataIterator = 0u;
+
+    S_mockUartTxRegister = SV_txData[SV_txDataIterator];
+    SV_txDataIterator++;
+
+    EnableTx();
+
+    /*
+        First byte will be written to Uart tx register and it will send it automatically.
+        Tx interrupt will kick in, if UartTxRegister is empty.
+        Uart tx register will be fed with the next byte of the SV_txData in the interrupt routine.
+        SV_txDataIterator will be incremented.
+        Tx will be done, if the SV_txDataIterator == SV_txDataSizeInBytes.
+        At Tx Done, the SV_txDoneCallback will be called and Tx interrupt will be disabled.
+    */
+
 }
 
 /************************************/
 /*Local functions*******************/
 /**********************************/
 
+static void EnableTx(void)
+{
+    S_mockIsTxBufferEmptyInterruptEnabled = true;
+}
+
+static void DisableTx(void)
+{
+    S_mockIsTxBufferEmptyInterruptEnabled = false;
+}
+
+static void EnableRx(void)
+{
+    S_mockIsRxBufferNotEmptyInterruptEnabled = true;
+}
+
+static void DisableRx(void)
+{
+    S_mockIsRxBufferNotEmptyInterruptEnabled = false;
+}
+
+static void TxInterruptRoutine(void)
+{
+    S_mockUartTxRegister = SV_txData[SV_txDataIterator];
+    SV_txDataIterator++;
+
+    if(SV_txDataSizeInBytes <= SV_txDataIterator)
+    {
+        DisableTx();
+        SV_txDoneCallback();
+    }
+}
