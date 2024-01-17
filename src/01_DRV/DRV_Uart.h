@@ -28,8 +28,6 @@ void DRV_Uart_RegisterCallbackOnTxDone(TxDoneUartCallbackFunction_t txDoneCallba
 
 void DRV_Uart_StartTx(void);
 
-void DRV_Uart_DisableRx(void);
-void DRV_Uart_DisableTx(void);
 void DRV_Uart_EnableRx(void);
 void DRV_Uart_DisableRx(void);
 
