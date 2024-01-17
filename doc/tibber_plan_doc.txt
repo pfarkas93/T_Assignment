@@ -1,0 +1,7 @@
+Format:
+A string will be sent, then the computer can parse it properly.
+
+{ID:[id];L1:[volts]:[amps];L2:[volts]:[amps];L3:[volts]:[amps];TS:[timestamp];}
+
+
+
