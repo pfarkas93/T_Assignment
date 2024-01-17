@@ -26,10 +26,9 @@ TESTABLE_STATIC bool S_mockIsRxBufferNotEmptyInterruptEnabled = false;
 /**********************************/
 static void EnableTx(void);
 static void DisableTx(void);
-static void EnableRx(void);
-static void DisableRx(void);
 
 static void TxInterruptRoutine(void);
+static void RxInterruptRoutine(void);
 /************************************/
 /*Global functions******************/
 /**********************************/
@@ -39,11 +38,18 @@ void DRV_Uart_Init(void)
     S_mockUartBaudRate = 300u;
 }
 
-void DRV_Uart_RegisterRxBuffer(uint8_t* rxBufferAddress, uint16_t rxBufferSizeInBytes)
+void DRV_Uart_SetRxBuffer(uint8_t* rxBufferAddress, uint16_t rxBufferSizeInBytes)
 {
     SV_rxBuffer = rxBufferAddress;
     SV_rxBufferSizeInBytes = rxBufferSizeInBytes;
     SV_rxBufferIterator = 0u;
+}
+
+void DRV_Uart_SetTxData(uint8_t* txDataAddress, uint16_t txDataSizeInBytes)
+{
+    SV_txData = txDataAddress;
+    SV_txDataSizeInBytes = txDataSizeInBytes;
+    SV_txDataIterator = 0u;
 }
 
 void DRV_Uart_SetRxEndCharacter(uint8_t rxEndCharacter)
@@ -54,6 +60,16 @@ void DRV_Uart_SetRxEndCharacter(uint8_t rxEndCharacter)
 void DRV_Uart_ClearRxBuffer(void)
 {
     SV_rxBufferIterator = 0u;
+}
+
+void DRV_Uart_EnableRx(void)
+{
+    S_mockIsRxBufferNotEmptyInterruptEnabled = true;
+}
+
+void DRV_Uart_DisableRx(void)
+{
+    S_mockIsRxBufferNotEmptyInterruptEnabled = false;
 }
 
 void DRV_Uart_SetBaudRate(uint16_t newBaudRate)
@@ -75,12 +91,8 @@ void DRV_Uart_RegisterCallbackOnTxDone(TxDoneUartCallbackFunction_t txDoneCallba
     SV_txDoneCallback = txDoneCallback;
 }
 
-void DRV_Uart_Send(uint8_t* txDataAddress, uint16_t txDataSizeInBytes)
+void DRV_Uart_StartTx(void)
 {
-    SV_txData = txDataAddress;
-    SV_txDataSizeInBytes = txDataSizeInBytes;
-    SV_txDataIterator = 0u;
-
     S_mockUartTxRegister = SV_txData[SV_txDataIterator];
     SV_txDataIterator++;
 
@@ -111,16 +123,6 @@ static void DisableTx(void)
     S_mockIsTxBufferEmptyInterruptEnabled = false;
 }
 
-static void EnableRx(void)
-{
-    S_mockIsRxBufferNotEmptyInterruptEnabled = true;
-}
-
-static void DisableRx(void)
-{
-    S_mockIsRxBufferNotEmptyInterruptEnabled = false;
-}
-
 static void TxInterruptRoutine(void)
 {
     S_mockUartTxRegister = SV_txData[SV_txDataIterator];
@@ -132,3 +134,9 @@ static void TxInterruptRoutine(void)
         SV_txDoneCallback();
     }
 }
+
+static void RxInterruptRoutine(void)
+{
+
+}
+

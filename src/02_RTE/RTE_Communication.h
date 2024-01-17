@@ -11,13 +11,14 @@
 void RTE_Communication_Init(void);
 
 /*
-SendHello
+SendHello(uint8_t* txDataAddress, uint16_t txDataSizeInBytes);
 ListenToHelloAnswer
 
-SendMeterDataReadoutRequest
+SendMeterDataReadoutRequest(uint8_t* txDataAddress, uint16_t txDataSizeInBytes);
 SetMeterDataRxBaudRate
 ListenToMeterData
 ResetBaudRate
+
 */
 
 #endif //_RTE_COMMUNICATION_H_
