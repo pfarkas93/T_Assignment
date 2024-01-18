@@ -24,20 +24,20 @@ Depends, if we want to use Cube´s HAL or the direct register accessing defines 
 
 # Running on battery powered device:
 - Minimize heavy calculations and processor usage
-----Just do the minimal data parsing. Converting text to numbers can happen on the server/computer
-----Send short data to server/computer
-----No polling, using interrupts instead
-----Consider saving the extract of the data to persistent memory. 
---------Handheld device can be powered off (or go to low power mode), 
---------data will be kept and transferred in bulk to server. 
-----Optimize code.
+  - Just do the minimal data parsing. Converting text to numbers can happen on the server/computer
+  - Send short data to server/computer
+  - No polling, using interrupts instead
+  - Consider saving the extract of the data to persistent memory. 
+    - Handheld device can be powered off (or go to low power mode),
+    - data will be kept and transferred in bulk to server. 
+  - Optimize code.
 
 # Format:
 A string will be sent, then the computer can parse it properly.
 {ID:[id];L1:[volts]:[amps];L2:[volts]:[amps];L3:[volts]:[amps];TS:[timestamp];}
 for example:
 "{ID:LGZ4ZMF100AC.M29CRLF;L1:231:00.000;L2:231:00.000;L3:231:00.000;TS:59-59-23-18-01-2024;}"
----timestamp is not necessary if it is a large overhead
+  - timestamp is not necessary if it is a large overhead
 
 # Error handling:
 - checking pointers against NULL
