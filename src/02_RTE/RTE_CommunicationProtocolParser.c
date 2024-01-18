@@ -13,22 +13,22 @@
 /*Global functions******************/
 /**********************************/
 
-void RTE_CommunicationProtocolParser_FillBufferWithHelloMessage(uint8_t *bufferToBeFilled, uint16_t* sizeOfFilledBufferInBytes)
+void RTE_CommunicationProtocolParser_FillBufferWithRequestIdMessage(uint8_t *bufferToBeFilled, uint16_t* sizeOfFilledBufferInBytes)
 {
-    uint8_t helloMessage[IEC6205621_HELLO_SIZE_IN_BYTES] = {0u};
+    uint8_t requestIdMessage[IEC6205621_REQUEST_ID_SIZE_IN_BYTES] = {0u};
     uint16_t bufferIndex = 0u;
 
-    helloMessage[IEC6205621_HELLO__place_of_StartCharacter]                 = IEC6205621_HELLO__value_of_StartCharacter;
-    helloMessage[IEC6205621_HELLO__place_of_TransmissionRequestCharacter]   = IEC6205621_HELLO__value_of_TransmissionRequestCharacter;
-    helloMessage[IEC6205621_HELLO__place_of_EndCharacter]                   = IEC6205621_HELLO__value_of_EndCharacter;
-    helloMessage[IEC6205621_HELLO__place_of_CR]                             = IEC6205621_HELLO__value_of_CR;
-    helloMessage[IEC6205621_HELLO__place_of_LF]                             = IEC6205621_HELLO__value_of_LF;
+    requestIdMessage[IEC6205621_REQUEST_ID__place_of_StartCharacter]                 = IEC6205621_REQUEST_ID__value_of_StartCharacter;
+    requestIdMessage[IEC6205621_REQUEST_ID__place_of_TransmissionRequestCharacter]   = IEC6205621_REQUEST_ID__value_of_TransmissionRequestCharacter;
+    requestIdMessage[IEC6205621_REQUEST_ID__place_of_EndCharacter]                   = IEC6205621_REQUEST_ID__value_of_EndCharacter;
+    requestIdMessage[IEC6205621_REQUEST_ID__place_of_CR]                             = IEC6205621_REQUEST_ID__value_of_CR;
+    requestIdMessage[IEC6205621_REQUEST_ID__place_of_LF]                             = IEC6205621_REQUEST_ID__value_of_LF;
 
-    sizeOfFilledBufferInBytes = IEC6205621_HELLO_SIZE_IN_BYTES;
+    sizeOfFilledBufferInBytes = IEC6205621_REQUEST_ID_SIZE_IN_BYTES;
 
     for(bufferIndex = 0u; bufferIndex < sizeOfFilledBufferInBytes; bufferIndex++)
     {
-        bufferToBeFilled[bufferIndex] = helloMessage[bufferIndex];
+        bufferToBeFilled[bufferIndex] = requestIdMessage[bufferIndex];
     }
 }
 
@@ -64,6 +64,16 @@ uint8_t RTE_CommunicationProtocolParser_GetBaudRateValueCharacterInHexFromIdStri
     }
 
     return baudRateCharacter;
+}
+
+uint8_t RTE_CommunicationProtocolParser_GetIdReplyRxTerminatingCharacter(void)
+{
+    return (uint8_t)IEC6205621_REQUEST_ID_REPLY_TERMINATING_CHARACTER;
+}
+
+uint8_t RTE_CommunicationProtocolParser_GetDataReadReplyRxTerminatingCharacter(void)
+{
+    return (uint8_t)IEC6205621_DATA_READOUT_REPLY_TERMINATING_CHARACTER;
 }
 
 /************************************/

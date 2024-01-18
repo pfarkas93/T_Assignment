@@ -7,27 +7,30 @@
 #define CR_Character 0x0D // carriage return
 #define LF_Character 0x0A // line feed
 
-//Hello: @6.3.1 Request message
+#define IEC6205621_REQUEST_ID_REPLY_TERMINATING_CHARACTER LF_Character // line feed
+#define IEC6205621_DATA_READOUT_REPLY_TERMINATING_CHARACTER 0x08 // BS: backspace  
 
-#define IEC6205621_HELLO_SIZE_IN_BYTES 5
+//REQUEST_ID: @6.3.1 Request message
 
-#define IEC6205621_HELLO__place_of_StartCharacter 0
-    #define IEC6205621_HELLO__value_of_StartCharacter 0x2F // '/'
+#define IEC6205621_REQUEST_ID_SIZE_IN_BYTES 5
 
-#define IEC6205621_HELLO__place_of_TransmissionRequestCharacter 1
-    #define IEC6205621_HELLO__value_of_TransmissionRequestCharacter 0x3F // '?'
+#define IEC6205621_REQUEST_ID__place_of_StartCharacter 0
+    #define IEC6205621_REQUEST_ID__value_of_StartCharacter 0x2F // '/'
 
-#define IEC6205621_HELLO__place_of_EndCharacter 2
-    #define IEC6205621_HELLO__value_of_EndCharacter 0x21 // '!'
+#define IEC6205621_REQUEST_ID__place_of_TransmissionRequestCharacter 1
+    #define IEC6205621_REQUEST_ID__value_of_TransmissionRequestCharacter 0x3F // '?'
 
-#define IEC6205621_HELLO__place_of_CR 3
-    #define IEC6205621_HELLO__value_of_CR CR_Character // carriage return
+#define IEC6205621_REQUEST_ID__place_of_EndCharacter 2
+    #define IEC6205621_REQUEST_ID__value_of_EndCharacter 0x21 // '!'
 
-#define IEC6205621_HELLO__place_of_LF 4
-    #define IEC6205621_HELLO__value_of_LF LF_Character // line feed
+#define IEC6205621_REQUEST_ID__place_of_CR 3
+    #define IEC6205621_REQUEST_ID__value_of_CR CR_Character // carriage return
+
+#define IEC6205621_REQUEST_ID__place_of_LF 4
+    #define IEC6205621_REQUEST_ID__value_of_LF LF_Character // line feed
 
 
-// Answer to Hello: @6.3.2 Identification message
+// Answer to REQUEST_ID: @6.3.2 Identification message
 #define IEC6205621_METER_ID__place_of_BaudRateCharacter 4 // 5th byte of the answer
 
 //ACK and option select: @6.3.3 Acknowledgement/option select message

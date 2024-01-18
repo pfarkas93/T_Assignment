@@ -2,6 +2,7 @@
 #define _RTE_COMMUNICATION_H_
 
 #include "GLOBALS_Types.h"
+#include "GLOBALS_UartCallbackTypes.h"
 
 /**
  * @brief Initialize communication run time service
