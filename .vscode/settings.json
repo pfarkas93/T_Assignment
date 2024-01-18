@@ -2,6 +2,8 @@
     "files.associations": {
         "globals_types.h": "c",
         "drv_uart.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "globals_iec6205621protocol.h": "c",
+        "rte_communicationprotocolparser.h": "c"
     }
 }

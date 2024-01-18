@@ -3,16 +3,36 @@
   :path: test/01_DRV
   :file: TestDRV_Uart.c
 :successes:
-- :test: test_Given_WhenUartInitCalled_ThenExpect
-  :line: 17
+- :test: test_GivenStartup_WhenUartInitCalled_ThenExpectBaudRateIsSetTo300
+  :line: 51
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenBufferPointer_WhenUartSetRxBufferCalled_ThenExpectSetStaticVariables
+  :line: 58
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenBufferPointerNULL_WhenUartSetRxBufferCalled_ThenExpectBufferAddressNULL
+  :line: 67
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenTxDataPointer_WhenUartSetTxDataCalled_ThenExpectSetStaticVariables
+  :line: 77
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenTxDataPointerNULL_WhenUartSetTxDataCalled_ThenExpectSetAddressNULL
+  :line: 86
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenEndCharacter_WhenUartSetRxEndCharacterCalled_ThenExpectSetEndCharacter
+  :line: 96
   :message: ''
   :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 1
-  :passed: 1
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.5885753000038676
+:time: 0.7590761000174098

@@ -37,12 +37,63 @@ for example:
 Error handling:
 - checking pointers against NULL
 - error message to the task OR functions always return error code...
+- parser should check if BAUD rate is valid. if not, then set the Data redaout message baud to 300
 
 TX and RX:
 - timeout should be set
 - RX can be monitored with a timer
 
 
+------------------------------------------------------------------------
+Random notes:
+
+Hello:
+/?!CRLF
+
+/ - Start character 0x2F
+? - Transmission request command 0x3F
+! - End character 0x21
 
 
+Answer:
+2F 4C 47 5A 34 5A 4D 46 31 30 30 41 43 2E 4D 32 39 0D 0A
+Z = ID[4] -- baud
 
+ACK:
+ACK V   Z   Y  CR LF
+4) 10) 13) 11) 3) 3)
+
+ACK: 0x06
+V: protocol control character 
+	0 - normal protocol procedure.
+	1 - secondary protocol procedure.
+	2 - HDLC protocol procedure, see Annex E.
+	3-9 - reserved for future applications.
+Z: baud 
+	0 - 300 Bd
+	1 - 600 Bd
+	2 - 1 200 Bd
+	3 - 2 400 Bd
+	4 - 4 800 Bd
+	5 - 9 600 Bd
+	6 - 19 200 Bd
+Y: mode control character
+	0 - data readout.
+	1 - programming mode.
+	2 - binary mode (HDLC), see Annex E.
+	3-5 and A-Z - reserved for future applications.
+	6-9 - manufacturer-specific use.
+CR: carriage return 0x0D
+LF: line feed 0x0A
+
+
+STX: start of text 0x02
+ETX: enf od text  0x03
+BS: backspace  0x08
+
+33322E37283233312A56290D0A
+35322E37283233302A56290D0A
+37322E37283233302A56290D0A
+33312E372830302E3030302A41290D0A
+35312E372830302E3030302A41290D0A
+37312E372830302E3030302A41290D0A

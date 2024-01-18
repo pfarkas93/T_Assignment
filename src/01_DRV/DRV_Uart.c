@@ -37,6 +37,8 @@ static void RxInterruptRoutine(void);
 void DRV_Uart_Init(void)
 {
     S_mockUartBaudRate = 300u;
+    /*Init all uart parameters. Data bits, parity, stop...*/
+    /*Disable all interrupts as default*/
 }
 
 void DRV_Uart_SetRxBuffer(uint8_t* rxBufferAddress, uint16_t rxBufferSizeInBytes)

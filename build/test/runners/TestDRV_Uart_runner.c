@@ -10,7 +10,12 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_Given_WhenUartInitCalled_ThenExpect(void);
+extern void test_GivenStartup_WhenUartInitCalled_ThenExpectBaudRateIsSetTo300(void);
+extern void test_GivenBufferPointer_WhenUartSetRxBufferCalled_ThenExpectSetStaticVariables(void);
+extern void test_GivenBufferPointerNULL_WhenUartSetRxBufferCalled_ThenExpectBufferAddressNULL(void);
+extern void test_GivenTxDataPointer_WhenUartSetTxDataCalled_ThenExpectSetStaticVariables(void);
+extern void test_GivenTxDataPointerNULL_WhenUartSetTxDataCalled_ThenExpectSetAddressNULL(void);
+extern void test_GivenEndCharacter_WhenUartSetRxEndCharacterCalled_ThenExpectSetEndCharacter(void);
 
 
 /*=======Mock Management=====*/
@@ -75,7 +80,12 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("TestDRV_Uart.c");
-  run_test(test_Given_WhenUartInitCalled_ThenExpect, "test_Given_WhenUartInitCalled_ThenExpect", 17);
+  run_test(test_GivenStartup_WhenUartInitCalled_ThenExpectBaudRateIsSetTo300, "test_GivenStartup_WhenUartInitCalled_ThenExpectBaudRateIsSetTo300", 51);
+  run_test(test_GivenBufferPointer_WhenUartSetRxBufferCalled_ThenExpectSetStaticVariables, "test_GivenBufferPointer_WhenUartSetRxBufferCalled_ThenExpectSetStaticVariables", 58);
+  run_test(test_GivenBufferPointerNULL_WhenUartSetRxBufferCalled_ThenExpectBufferAddressNULL, "test_GivenBufferPointerNULL_WhenUartSetRxBufferCalled_ThenExpectBufferAddressNULL", 67);
+  run_test(test_GivenTxDataPointer_WhenUartSetTxDataCalled_ThenExpectSetStaticVariables, "test_GivenTxDataPointer_WhenUartSetTxDataCalled_ThenExpectSetStaticVariables", 77);
+  run_test(test_GivenTxDataPointerNULL_WhenUartSetTxDataCalled_ThenExpectSetAddressNULL, "test_GivenTxDataPointerNULL_WhenUartSetTxDataCalled_ThenExpectSetAddressNULL", 86);
+  run_test(test_GivenEndCharacter_WhenUartSetRxEndCharacterCalled_ThenExpectSetEndCharacter, "test_GivenEndCharacter_WhenUartSetRxEndCharacterCalled_ThenExpectSetEndCharacter", 96);
 
   return UnityEnd();
 }
