@@ -38,6 +38,8 @@ Error handling:
 - checking pointers against NULL
 - error message to the task OR functions always return error code...
 - parser should check if BAUD rate is valid. if not, then set the Data redaout message baud to 300
+- parser should check if the message will fit in the given buffer by getting the buffer max size as a parameter
+- NOW we expect the buffers to be large enough to all the applications
 
 TX and RX:
 - timeout should be set
