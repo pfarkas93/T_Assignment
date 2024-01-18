@@ -37,10 +37,13 @@ void RTE_Communication_ListenToMeterDeviceAnswer(uint8_t *rxBufferAddress, uint1
 
 void RTE_Communication_SetMeterDataRxBaudRate(uint16_t newBaudRate)
 {
+    DRV_Uart_SetBaudRate(newBaudRate);
 }
 
 void RTE_Communication_ResetBaudRate(void)
 {
+    uint16_t defaultBaudRate = 300u;
+    DRV_Uart_SetBaudRate(defaultBaudRate);
 }
 
 /************************************/

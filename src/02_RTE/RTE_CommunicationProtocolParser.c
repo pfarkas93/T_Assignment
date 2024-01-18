@@ -1,6 +1,18 @@
 #include "RTE_CommunicationProtocolParser.h"
 #include "GLOBALS_IEC6205621Protocol.h"
 
+/************************************/
+/*Local variables*******************/
+/**********************************/
+
+/************************************/
+/*Local function definitions********/
+/**********************************/
+
+/************************************/
+/*Global functions******************/
+/**********************************/
+
 void RTE_CommunicationProtocolParser_FillBufferWithHelloMessage(uint8_t *bufferToBeFilled, uint16_t* sizeOfFilledBufferInBytes)
 {
     uint8_t helloMessage[IEC6205621_HELLO_SIZE_IN_BYTES] = {0u};
@@ -53,3 +65,7 @@ uint8_t RTE_CommunicationProtocolParser_GetBaudRateValueCharacterInHexFromIdStri
 
     return baudRateCharacter;
 }
+
+/************************************/
+/*Local functions*******************/
+/**********************************/

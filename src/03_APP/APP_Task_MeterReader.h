@@ -1,0 +1,7 @@
+#ifndef _APP_TASK_METERREADER_H_
+#define _APP_TASK_METERREADER_H_
+
+#include "GLOBALS_Types.h"
+
+
+#endif //_APP_TASK_METERREADER_H_
