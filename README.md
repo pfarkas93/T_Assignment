@@ -8,8 +8,8 @@ I will go with STM32 F - series. There are low power, robust, reasonable priced 
 I do not have hardware at home at the moment, so my solution will be without MCU specific code.
 
 # Environment:
-I chose C language with cMake, Unity test and cMock (with Ceedling build system in Ruby environment). 
-I could integrate it to VS Code.
+I chose **C** language with **cMake**, **Unity test** and **cMock** (with **Ceedling** build system in Ruby environment). 
+I could integrate it to **VS Code**.
 For STM32 specific code, I would use EMbitz IDE or STM-Cube. 
 Depends, if we want to use Cube´s HAL or the direct register accessing defines in ST libraries.
 
