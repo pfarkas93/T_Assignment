@@ -100,10 +100,11 @@ void test_GivenEndCharacter_WhenUartSetRxEndCharacterCalled_ThenExpectSetEndChar
     TEST_ASSERT_EQUAL(0x08, SV_rxEndCharacter );
 }
 
-/*DRV_Uart_ClearRxBuffer()*************************************************/
-/*DRV_Uart_EnableRx()*************************************************/
-/*DRV_Uart_DisableRx()*************************************************/
-/*DRV_Uart_SetBaudRate()*************************************************/
-/*DRV_Uart_RegisterCallbackOnRxDone()*************************************************/
-/*DRV_Uart_RegisterCallbackOnTxDone()*************************************************/
-/*DRV_Uart_StartTx()*************************************************/
+
+
+/* DRV_Uart_SetBaudRate()*************************************************/
+/* DRV_Uart_RegisterCallbackOnRxDone()*************************************************/
+/* DRV_Uart_RegisterCallbackOnTxDone()*************************************************/
+/* DRV_Uart_StartTx()*************************************************/
+/* DRV_Uart_EnableRx()*************************************************/
+/* DRV_Uart_DisableRx()*************************************************/

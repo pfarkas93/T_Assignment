@@ -24,9 +24,9 @@ void RTE_CommunicationProtocolParser_FillBufferWithRequestIdMessage(uint8_t *buf
     requestIdMessage[IEC6205621_REQUEST_ID__place_of_CR]                             = IEC6205621_REQUEST_ID__value_of_CR;
     requestIdMessage[IEC6205621_REQUEST_ID__place_of_LF]                             = IEC6205621_REQUEST_ID__value_of_LF;
 
-    sizeOfFilledBufferInBytes = IEC6205621_REQUEST_ID_SIZE_IN_BYTES;
+    *sizeOfFilledBufferInBytes = IEC6205621_REQUEST_ID_SIZE_IN_BYTES;
 
-    for(bufferIndex = 0u; bufferIndex < sizeOfFilledBufferInBytes; bufferIndex++)
+    for(bufferIndex = 0u; bufferIndex < *sizeOfFilledBufferInBytes; bufferIndex++)
     {
         bufferToBeFilled[bufferIndex] = requestIdMessage[bufferIndex];
     }
@@ -46,8 +46,8 @@ void RTE_CommunicationProtocolParser_FillBufferWithAckAndDataReadoutRequestMessa
     ackMessage[IEC6205621_ACK_AND_OPTION_SELECT__place_of_CR]  = IEC6205621_ACK_AND_OPTION_SELECT__place_of_CR;
     ackMessage[IEC6205621_ACK_AND_OPTION_SELECT__place_of_LF]  = IEC6205621_ACK_AND_OPTION_SELECT__place_of_LF;
 
-    sizeOfFilledBufferInBytes = IEC6205621_ACK_AND_OPTION_SELECT_SIZE_IN_BYTES;
-    for(bufferIndex = 0u; bufferIndex < sizeOfFilledBufferInBytes; bufferIndex++)
+    *sizeOfFilledBufferInBytes = IEC6205621_ACK_AND_OPTION_SELECT_SIZE_IN_BYTES;
+    for(bufferIndex = 0u; bufferIndex < *sizeOfFilledBufferInBytes; bufferIndex++)
     {
         bufferToBeFilled[bufferIndex] = ackMessage[bufferIndex];
     }

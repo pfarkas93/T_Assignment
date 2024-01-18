@@ -3,3 +3,7 @@ src/01_DRV/DRV_Uart.c:
 - TEST
 src/02_RTE/RTE_Communication.c:
 - TEST
+build/test/mocks/mock_DRV_Uart.c:
+- TEST
+src/02_RTE/RTE_CommunicationProtocolParser.c:
+- TEST
