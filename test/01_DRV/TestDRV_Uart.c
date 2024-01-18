@@ -100,11 +100,74 @@ void test_GivenEndCharacter_WhenUartSetRxEndCharacterCalled_ThenExpectSetEndChar
     TEST_ASSERT_EQUAL(0x08, SV_rxEndCharacter );
 }
 
-
-
 /* DRV_Uart_SetBaudRate()*************************************************/
+void test_Given600Baud_WhenUartSetBaudRateCalled_ThenExpectSetBaudRateTo600(void)
+{
+    DRV_Uart_SetBaudRate(600);
+    
+    TEST_ASSERT_EQUAL(600, S_mockUartBaudRate );
+}
+
 /* DRV_Uart_RegisterCallbackOnRxDone()*************************************************/
+void test_GivenCallback_WhenUartRegisterCallbackOnRxDoneCalled_ThenExpectCallbackRegistered(void)
+{
+    RxDoneUartCallbackFunction_t testCallback;
+    DRV_Uart_RegisterCallbackOnRxDone(testCallback);
+    
+    TEST_ASSERT_EQUAL(testCallback, SV_rxDoneCallback );
+}
+
+void test_GivenCallbackNULL_WhenUartRegisterCallbackOnRxDoneCalled_ThenExpectCallbackNULL(void)
+{
+    DRV_Uart_RegisterCallbackOnRxDone(NULL);
+    
+    TEST_ASSERT_EQUAL(NULL, SV_rxDoneCallback );
+}
+
 /* DRV_Uart_RegisterCallbackOnTxDone()*************************************************/
+void test_GivenCallback_WhenUartRegisterCallbackOnTxDoneCalled_ThenExpectCallbackRegistered(void)
+{
+    TxDoneUartCallbackFunction_t testCallback;
+    DRV_Uart_RegisterCallbackOnTxDone(testCallback);
+    
+    TEST_ASSERT_EQUAL(testCallback, SV_txDoneCallback );
+}
+
+void test_GivenCallbackNULL_WhenUartRegisterCallbackOnTxDoneCalled_ThenExpectCallbackNULL(void)
+{
+    DRV_Uart_RegisterCallbackOnTxDone(NULL);
+    
+    TEST_ASSERT_EQUAL(NULL, SV_txDoneCallback );
+}
+
 /* DRV_Uart_StartTx()*************************************************/
+void test_GivenTxDataSet_WhenStartTxCalled_ThenExpectFillTxRegisterAndIncrementIterator(void)
+{
+    S_testBuffer[0] = 'a';
+    DRV_Uart_SetTxData(S_testBuffer, sizeof(S_testBuffer));
+
+    DRV_Uart_StartTx();
+    
+    TEST_ASSERT_EQUAL('a', S_mockUartTxRegister );
+    TEST_ASSERT_EQUAL(1u, SV_txDataIterator );
+}
+
 /* DRV_Uart_EnableRx()*************************************************/
+void test_GivenRxDisabled_WhenEnableRxalled_ThenExpectEnableRx(void)
+{
+    TEST_ASSERT_EQUAL(false, S_mockIsRxBufferNotEmptyInterruptEnabled );
+
+    DRV_Uart_EnableRx();
+    
+    TEST_ASSERT_EQUAL(true, S_mockIsRxBufferNotEmptyInterruptEnabled );
+}
+
 /* DRV_Uart_DisableRx()*************************************************/
+void test_GivenRxEnabled_WhenDisleRxalled_ThenExpectDisableRx(void)
+{
+    DRV_Uart_EnableRx();
+    TEST_ASSERT_EQUAL(true, S_mockIsRxBufferNotEmptyInterruptEnabled );
+
+    DRV_Uart_DisableRx();
+    TEST_ASSERT_EQUAL(false, S_mockIsRxBufferNotEmptyInterruptEnabled );
+}

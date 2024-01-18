@@ -27,12 +27,44 @@
   :line: 96
   :message: ''
   :unity_test_time: 0
+- :test: test_Given600Baud_WhenUartSetBaudRateCalled_ThenExpectSetBaudRateTo600
+  :line: 104
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenCallback_WhenUartRegisterCallbackOnRxDoneCalled_ThenExpectCallbackRegistered
+  :line: 112
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenCallbackNULL_WhenUartRegisterCallbackOnRxDoneCalled_ThenExpectCallbackNULL
+  :line: 120
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenCallback_WhenUartRegisterCallbackOnTxDoneCalled_ThenExpectCallbackRegistered
+  :line: 128
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenCallbackNULL_WhenUartRegisterCallbackOnTxDoneCalled_ThenExpectCallbackNULL
+  :line: 136
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenTxDataSet_WhenStartTxCalled_ThenExpectFillTxRegisterAndIncrementIterator
+  :line: 144
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenRxDisabled_WhenEnableRxalled_ThenExpectEnableRx
+  :line: 156
+  :message: ''
+  :unity_test_time: 0
+- :test: test_GivenRxEnabled_WhenDisleRxalled_ThenExpectDisableRx
+  :line: 166
+  :message: ''
+  :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 6
-  :passed: 6
+  :total: 14
+  :passed: 14
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.623828699986916
+:time: 0.8202858000295237

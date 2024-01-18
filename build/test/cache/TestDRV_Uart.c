@@ -285,3 +285,207 @@ void test_GivenEndCharacter_WhenUartSetRxEndCharacterCalled_ThenExpectSetEndChar
    ), (UNITY_UINT)(100), UNITY_DISPLAY_STYLE_INT);
 
 }
+
+
+
+
+
+void test_Given600Baud_WhenUartSetBaudRateCalled_ThenExpectSetBaudRateTo600(void)
+
+{
+
+    DRV_Uart_SetBaudRate(600);
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)((600)), (UNITY_INT)((S_mockUartBaudRate)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(108), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+void test_GivenCallback_WhenUartRegisterCallbackOnRxDoneCalled_ThenExpectCallbackRegistered(void)
+
+{
+
+    RxDoneUartCallbackFunction_t testCallback;
+
+    DRV_Uart_RegisterCallbackOnRxDone(testCallback);
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)((testCallback)), (UNITY_INT)((SV_rxDoneCallback)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(117), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_GivenCallbackNULL_WhenUartRegisterCallbackOnRxDoneCalled_ThenExpectCallbackNULL(void)
+
+{
+
+    DRV_Uart_RegisterCallbackOnRxDone(
+
+                                     ((void *)0)
+
+                                         );
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)((
+
+   ((void *)0)
+
+   )), (UNITY_INT)((SV_rxDoneCallback)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(124), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+void test_GivenCallback_WhenUartRegisterCallbackOnTxDoneCalled_ThenExpectCallbackRegistered(void)
+
+{
+
+    TxDoneUartCallbackFunction_t testCallback;
+
+    DRV_Uart_RegisterCallbackOnTxDone(testCallback);
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)((testCallback)), (UNITY_INT)((SV_txDoneCallback)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(133), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_GivenCallbackNULL_WhenUartRegisterCallbackOnTxDoneCalled_ThenExpectCallbackNULL(void)
+
+{
+
+    DRV_Uart_RegisterCallbackOnTxDone(
+
+                                     ((void *)0)
+
+                                         );
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)((
+
+   ((void *)0)
+
+   )), (UNITY_INT)((SV_txDoneCallback)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(140), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+void test_GivenTxDataSet_WhenStartTxCalled_ThenExpectFillTxRegisterAndIncrementIterator(void)
+
+{
+
+    S_testBuffer[0] = 'a';
+
+    DRV_Uart_SetTxData(S_testBuffer, sizeof(S_testBuffer));
+
+
+
+    DRV_Uart_StartTx();
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)(('a')), (UNITY_INT)((S_mockUartTxRegister)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(151), UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((UNITY_INT)((1u)), (UNITY_INT)((SV_txDataIterator)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(152), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+void test_GivenRxDisabled_WhenEnableRxalled_ThenExpectEnableRx(void)
+
+{
+
+    UnityAssertEqualNumber((UNITY_INT)(((bool) 0)), (UNITY_INT)((S_mockIsRxBufferNotEmptyInterruptEnabled)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(158), UNITY_DISPLAY_STYLE_INT);
+
+
+
+    DRV_Uart_EnableRx();
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)(((bool) 1)), (UNITY_INT)((S_mockIsRxBufferNotEmptyInterruptEnabled)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(162), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+void test_GivenRxEnabled_WhenDisleRxalled_ThenExpectDisableRx(void)
+
+{
+
+    DRV_Uart_EnableRx();
+
+    UnityAssertEqualNumber((UNITY_INT)(((bool) 1)), (UNITY_INT)((S_mockIsRxBufferNotEmptyInterruptEnabled)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(169), UNITY_DISPLAY_STYLE_INT);
+
+
+
+    DRV_Uart_DisableRx();
+
+    UnityAssertEqualNumber((UNITY_INT)(((bool) 0)), (UNITY_INT)((S_mockIsRxBufferNotEmptyInterruptEnabled)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(172), UNITY_DISPLAY_STYLE_INT);
+
+}

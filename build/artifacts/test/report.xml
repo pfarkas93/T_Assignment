@@ -1,45 +1,56 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <TestRun>
-	<FailedTests>
-		<Test id="1">
-			<Name>test/02_RTE/TestRTE_Communication.c::test_Given_WhenCommunicationInitCalled_ThenExpect</Name>
-			<FailureType>Assertion</FailureType>
-			<Location>
-				<File>test/02_RTE/TestRTE_Communication.c</File>
-				<Line>18</Line>
-			</Location>
-			<Message>Function DRV_Uart_Init.  Called more times than expected.</Message>
-		</Test>
-	</FailedTests>
+	<FailedTests/>
 	<SuccessfulTests>
-		<Test id="2">
+		<Test id="1">
 			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenStartup_WhenUartInitCalled_ThenExpectBaudRateIsSetTo300</Name>
 		</Test>
-		<Test id="3">
+		<Test id="2">
 			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenBufferPointer_WhenUartSetRxBufferCalled_ThenExpectSetStaticVariables</Name>
 		</Test>
-		<Test id="4">
+		<Test id="3">
 			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenBufferPointerNULL_WhenUartSetRxBufferCalled_ThenExpectBufferAddressNULL</Name>
 		</Test>
-		<Test id="5">
+		<Test id="4">
 			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenTxDataPointer_WhenUartSetTxDataCalled_ThenExpectSetStaticVariables</Name>
 		</Test>
-		<Test id="6">
+		<Test id="5">
 			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenTxDataPointerNULL_WhenUartSetTxDataCalled_ThenExpectSetAddressNULL</Name>
 		</Test>
-		<Test id="7">
+		<Test id="6">
 			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenEndCharacter_WhenUartSetRxEndCharacterCalled_ThenExpectSetEndCharacter</Name>
 		</Test>
+		<Test id="7">
+			<Name>test/01_DRV/TestDRV_Uart.c::test_Given600Baud_WhenUartSetBaudRateCalled_ThenExpectSetBaudRateTo600</Name>
+		</Test>
 		<Test id="8">
-			<Name>test/02_RTE/TestRTE_CommunicationProtocolParser.c::test_Given_WhenCommunicationInitCalled_ThenExpect</Name>
+			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenCallback_WhenUartRegisterCallbackOnRxDoneCalled_ThenExpectCallbackRegistered</Name>
+		</Test>
+		<Test id="9">
+			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenCallbackNULL_WhenUartRegisterCallbackOnRxDoneCalled_ThenExpectCallbackNULL</Name>
+		</Test>
+		<Test id="10">
+			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenCallback_WhenUartRegisterCallbackOnTxDoneCalled_ThenExpectCallbackRegistered</Name>
+		</Test>
+		<Test id="11">
+			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenCallbackNULL_WhenUartRegisterCallbackOnTxDoneCalled_ThenExpectCallbackNULL</Name>
+		</Test>
+		<Test id="12">
+			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenTxDataSet_WhenStartTxCalled_ThenExpectFillTxRegisterAndIncrementIterator</Name>
+		</Test>
+		<Test id="13">
+			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenRxDisabled_WhenEnableRxalled_ThenExpectEnableRx</Name>
+		</Test>
+		<Test id="14">
+			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenRxEnabled_WhenDisleRxalled_ThenExpectDisableRx</Name>
 		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>
 	<Statistics>
-		<Tests>8</Tests>
+		<Tests>14</Tests>
 		<Ignores>0</Ignores>
-		<FailuresTotal>1</FailuresTotal>
+		<FailuresTotal>0</FailuresTotal>
 		<Errors>0</Errors>
-		<Failures>1</Failures>
+		<Failures>0</Failures>
 	</Statistics>
 </TestRun>

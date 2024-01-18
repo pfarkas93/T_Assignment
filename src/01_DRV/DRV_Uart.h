@@ -4,7 +4,6 @@
 #include "GLOBALS_Types.h"
 #include "GLOBALS_UartCallbackTypes.h"
 
-
 /**
  * @brief Initialize Uart Driver
  */
