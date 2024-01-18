@@ -6,7 +6,7 @@
 TESTABLE_STATIC volatile uint8_t* SV_rxBuffer = NULL;
 TESTABLE_STATIC volatile uint16_t SV_rxBufferSizeInBytes = 0u;
 TESTABLE_STATIC volatile uint16_t SV_rxBufferIterator = 0u;
-TESTABLE_STATIC volatile uint8_t SV_rxEndCharacter = 0u;
+TESTABLE_STATIC volatile uint8_t  SV_rxEndCharacter = 0u;
 
 TESTABLE_STATIC volatile uint8_t* SV_txData = NULL;
 TESTABLE_STATIC volatile uint16_t SV_txDataSizeInBytes = 0u;
@@ -16,10 +16,10 @@ TESTABLE_STATIC volatile RxDoneUartCallbackFunction_t SV_rxDoneCallback = NULL;
 TESTABLE_STATIC volatile TxDoneUartCallbackFunction_t SV_txDoneCallback = NULL;
 
 TESTABLE_STATIC uint16_t S_mockUartBaudRate = 0u;
-TESTABLE_STATIC uint8_t S_mockUartTxRegister = 0u;
-TESTABLE_STATIC uint8_t S_mockUartRxRegister = 0u;
-TESTABLE_STATIC bool S_mockIsTxBufferEmptyInterruptEnabled = false;
-TESTABLE_STATIC bool S_mockIsRxBufferNotEmptyInterruptEnabled = false;
+TESTABLE_STATIC uint8_t  S_mockUartTxRegister = 0u;
+TESTABLE_STATIC uint8_t  S_mockUartRxRegister = 0u;
+TESTABLE_STATIC bool     S_mockIsTxBufferEmptyInterruptEnabled = false;
+TESTABLE_STATIC bool     S_mockIsRxBufferNotEmptyInterruptEnabled = false;
 
 
 /************************************/
@@ -107,7 +107,6 @@ void DRV_Uart_StartTx(void)
         Tx will be done, if the SV_txDataIterator == SV_txDataSizeInBytes.
         At Tx Done, the SV_txDoneCallback will be called and Tx interrupt will be disabled.
     */
-
 }
 
 /************************************/
