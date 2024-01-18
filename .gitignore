@@ -2,3 +2,14 @@ build/
 build/artifacts/test/report.xml
 build/test/cache/defines_dependency.yml
 build/test/results/TestDRV_Uart.pass
+build/artifacts/test/report.xml
+build/test/cache/TestDRV_Uart.c
+build/test/dependencies/DRV_Uart.d
+build/test/dependencies/TestDRV_Uart.d
+build/test/out/TestDRV_Uart.out
+build/test/out/c/DRV_Uart.o
+build/test/out/c/TestDRV_Uart_runner.o
+build/test/out/c/TestDRV_Uart.o
+build/test/preprocess/files/TestDRV_Uart.c
+build/test/results/TestDRV_Uart.pass
+build/test/runners/TestDRV_Uart_runner.c
