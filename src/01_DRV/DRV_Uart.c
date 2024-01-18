@@ -15,6 +15,7 @@ TESTABLE_STATIC volatile uint16_t SV_txDataIterator = 0u;
 TESTABLE_STATIC volatile RxDoneUartCallbackFunction_t SV_rxDoneCallback = NULL;
 TESTABLE_STATIC volatile TxDoneUartCallbackFunction_t SV_txDoneCallback = NULL;
 
+/*The following mock variables are simulating hardware specific flags and registers*/
 TESTABLE_STATIC uint16_t S_mockUartBaudRate = 0u;
 TESTABLE_STATIC uint8_t  S_mockUartTxRegister = 0u;
 TESTABLE_STATIC uint8_t  S_mockUartRxRegister = 0u;
@@ -25,11 +26,27 @@ TESTABLE_STATIC bool     S_mockIsRxBufferNotEmptyInterruptEnabled = false;
 /************************************/
 /*Local function definitions********/
 /**********************************/
+
+/**
+ * @brief Enable uart transmit
+ */
 static void EnableTx(void);
+
+/**
+ * @brief Disable uart transmit
+ */
 static void DisableTx(void);
 
+/**
+ * @brief Transmit uart interrupt
+ */
 static void TxInterruptRoutine(void);
+
+/**
+ * @brief Receive uart interrupt
+ */
 static void RxInterruptRoutine(void);
+
 /************************************/
 /*Global functions******************/
 /**********************************/
@@ -58,11 +75,6 @@ void DRV_Uart_SetTxData(uint8_t* txDataAddress, uint16_t txDataSizeInBytes)
 void DRV_Uart_SetRxEndCharacter(uint8_t rxEndCharacter)
 {
     SV_rxEndCharacter = rxEndCharacter;
-}
-
-void DRV_Uart_ClearRxBuffer(void)
-{
-    SV_rxBufferIterator = 0u;
 }
 
 void DRV_Uart_EnableRx(void)

@@ -3,11 +3,17 @@
 
 #include "GLOBALS_Types.h"
 
+/**
+ * @brief Meter reader task function with infinite loop   
+ */ 
 void APP_Task_MeterReader(void);
 
+/**
+ * @brief Meter reader states for a state machine within the task   
+ */ 
 typedef enum
 {
-    E_MeterReaderStates_Init,
+    E_MeterReaderStates_Init = 0,
     E_MeterReaderStates_Idle,
     E_MeterReaderStates_SendRequestId,
     E_MeterReaderStates_SleepUntilRequestIdTxDone,

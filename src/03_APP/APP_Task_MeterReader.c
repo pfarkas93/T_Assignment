@@ -19,28 +19,75 @@ TESTABLE_STATIC uint16_t S_sizeOfMeterDataInBytes = 0u;
 
 TESTABLE_STATIC E_MeterReaderStates_t S_meterReaderTaskState = E_MeterReaderStates_Init;
 
-
-
-
-
 /************************************/
 /*Local function definitions********/
 /**********************************/
+
+/**
+ * @brief Send Id request to the meter device   
+ */ 
 static void SendRequestIdToMeter(void);
+
+/**
+ * @brief Tx Done callback function for Request ID message   
+ */ 
 static TxDoneUartCallbackFunction_t RequestIdMessageTxDoneCallback(void);
+
+/**
+ * @brief Tx Done callback function for Ack and data readout request message   
+ */ 
 static TxDoneUartCallbackFunction_t AckMessageTxDoneCallback(void);
-static void ListenToMeterDataReadoutReplyOnANewBaudRate(void);
+
+/**
+ * @brief Listen to meter data readout reply   
+ */ 
+static void ListenToMeterDataReadoutReply(void);
+
+/**
+ * @brief Listen to meter device is reply   
+ */ 
 static void ListenToMeterDeviceIdReply(void);
+
+/**
+ * @brief Rx Done callback function for ID receive 
+ * 
+ * @param[in] sizeOfReceivedDataInBytes Size of received data in bytes
+ */ 
 static RxDoneUartCallbackFunction_t IdRxDoneCallback(uint16_t sizeOfReceivedDataInBytes);
+
+/**
+ * @brief Save ID string to static variable   
+ */ 
 static void SaveIdStringToStaticVariable(void);
+
+/**
+ * @brief Send ACK and data readout request to meter device   
+ */ 
 static void SendAckAndDataReadoutRequestToMeter(void);
+
+/**
+ * @brief Rx Done callback function for meter data readout   
+ *  
+ * @param[in] sizeOfReceivedDataInBytes Size of received data in bytes
+ */ 
 static RxDoneUartCallbackFunction_t MeterDataRxDoneCallback(uint16_t sizeOfReceivedDataInBytes);
+
+/**
+ * @brief Task sleep -- empty function that simulates FreeRTOS function  
+ */ 
 static void Sleep(void);
+
+/**
+ * @brief Task wake up -- empty function that simulates FreeRTOS function  
+ */ 
 static void WakeUp(void);
+
+/**
+ * @brief Next state -- state machine will step to next state
+ * 
+ * @param[in] nextState The next state  
+ */ 
 static void NextState(E_MeterReaderStates_t nextState);
-
-
-
 
 /************************************/
 /*Global functions******************/
@@ -120,7 +167,7 @@ void APP_Task_MeterReader(void)
             }
             case E_MeterReaderStates_StartListeningToDataReadoutReply:
             {
-                ListenToMeterDataReadoutReplyOnANewBaudRate();
+                ListenToMeterDataReadoutReply();
                 NextState(E_MeterReaderStates_SleepUntilDataReadoutReplyRxDone);
                 Sleep();
                 break;
@@ -135,6 +182,7 @@ void APP_Task_MeterReader(void)
             {
                 /*Parse and save data*/
                 /*We have the length of read data from the callback*/
+                RTE_Communication_ResetBaudRate();
                 NextState(E_MeterReaderStates_Idle);
                 break;
             }
@@ -213,7 +261,7 @@ static TxDoneUartCallbackFunction_t AckMessageTxDoneCallback(void)
     WakeUp();
 }
 
-static void ListenToMeterDataReadoutReplyOnANewBaudRate(void)
+static void ListenToMeterDataReadoutReply(void)
 {
     uint8_t dataReadReplyTerminatingCharacter = RTE_CommunicationProtocolParser_GetDataReadReplyRxTerminatingCharacter();
 
@@ -231,12 +279,12 @@ static RxDoneUartCallbackFunction_t MeterDataRxDoneCallback(uint16_t sizeOfRecei
 
 static void Sleep(void)
 {
-
+    /*FreeRTOS task control function...*/
 }
 
 static void WakeUp(void)
 {
-
+    /*FreeRTOS task control function...*/
 }
 
 static void NextState(E_MeterReaderStates_t nextState)
