@@ -17,6 +17,7 @@ TESTABLE_STATIC volatile TxDoneUartCallbackFunction_t SV_txDoneCallback = NULL;
 
 TESTABLE_STATIC uint16_t S_mockUartBaudRate = 0u;
 TESTABLE_STATIC uint8_t S_mockUartTxRegister = 0u;
+TESTABLE_STATIC uint8_t S_mockUartRxRegister = 0u;
 TESTABLE_STATIC bool S_mockIsTxBufferEmptyInterruptEnabled = false;
 TESTABLE_STATIC bool S_mockIsRxBufferNotEmptyInterruptEnabled = false;
 
@@ -137,6 +138,13 @@ static void TxInterruptRoutine(void)
 
 static void RxInterruptRoutine(void)
 {
+    SV_rxBuffer[SV_rxBufferIterator] = S_mockUartRxRegister;
+    SV_rxBufferIterator++;
 
+    if((SV_rxEndCharacter == S_mockUartRxRegister) || (SV_rxBufferIterator >= SV_rxBufferSizeInBytes))
+    {
+        DRV_Uart_DisableRx();
+        SV_rxDoneCallback((SV_rxBufferIterator - 1u));
+    }
 }
 
