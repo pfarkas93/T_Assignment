@@ -52,3 +52,6 @@ for example:
 - RX can be monitored with a timer
 - Switching baud rate will happen in microseconds
 - there is minimum 20 ms (according to the standard) time before the metering device starts the faster communication, so it will not be a problem
+
+
+![tibber_plan_diagrams](https://github.com/pfarkas93/Tibber/assets/23613541/8174180d-cc49-41c5-8012-65f99fdc4f37)
