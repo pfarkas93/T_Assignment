@@ -56,3 +56,8 @@ for example:
 # Diagrams:
 
 ![tibber_plan_diagrams](https://github.com/pfarkas93/Tibber/assets/23613541/8174180d-cc49-41c5-8012-65f99fdc4f37)
+
+# Unit tests:
+![image](https://github.com/pfarkas93/Tibber/assets/23613541/fc569da0-17ad-4be8-8b18-5d3a091f80f8)
+
+
