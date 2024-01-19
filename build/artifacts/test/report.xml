@@ -60,12 +60,27 @@
 			<Name>test/02_RTE/TestRTE_Communication.c::test_GivenNothing_WhenResetMeterDataRxBaudRateCalled_ThenExpectResetBaudRateTo300</Name>
 		</Test>
 		<Test id="20">
-			<Name>test/02_RTE/TestRTE_CommunicationProtocolParser.c::test_Given_WhenCommunicationInitCalled_ThenExpect</Name>
+			<Name>test/02_RTE/TestRTE_CommunicationProtocolParser.c::test_GivenNothing_WhenFillBufferWithRequestIdMessageCalled_ThenExpectFilledBuffer</Name>
+		</Test>
+		<Test id="21">
+			<Name>test/02_RTE/TestRTE_CommunicationProtocolParser.c::test_GivenBaud4_WhenFillBufferWithAckAndDataReadoutRequestMessageCalled_ThenExpectFilledBuffer</Name>
+		</Test>
+		<Test id="22">
+			<Name>test/02_RTE/TestRTE_CommunicationProtocolParser.c::test_GivenBaud4AndLength6_WhenGetBaudRateValueCharacterInHexFromIdStringCalled_ThenExpectGetBaud4</Name>
+		</Test>
+		<Test id="23">
+			<Name>test/02_RTE/TestRTE_CommunicationProtocolParser.c::test_GivenBaud4AndLength4_WhenGetBaudRateValueCharacterInHexFromIdStringCalled_ThenExpectGetBaud0</Name>
+		</Test>
+		<Test id="24">
+			<Name>test/02_RTE/TestRTE_CommunicationProtocolParser.c::test_GivenNothing_WhenGetIdReplyRxTerminatingCharacterCalled_ThenExpectGet0x0A</Name>
+		</Test>
+		<Test id="25">
+			<Name>test/02_RTE/TestRTE_CommunicationProtocolParser.c::test_GivenNothing_WhenGetDataReadReplyRxTerminatingCharacterCalled_ThenExpectGet0x08</Name>
 		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>
 	<Statistics>
-		<Tests>20</Tests>
+		<Tests>25</Tests>
 		<Ignores>0</Ignores>
 		<FailuresTotal>0</FailuresTotal>
 		<Errors>0</Errors>

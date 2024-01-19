@@ -43,8 +43,8 @@ void RTE_CommunicationProtocolParser_FillBufferWithAckAndDataReadoutRequestMessa
     ackMessage[IEC6205621_ACK_AND_OPTION_SELECT__place_of_V]   = IEC6205621_ACK_AND_OPTION_SELECT__value_of_V__normal_protocol_procedure;
     ackMessage[IEC6205621_ACK_AND_OPTION_SELECT__place_of_Z]   = baudRateCharacterInHex;
     ackMessage[IEC6205621_ACK_AND_OPTION_SELECT__place_of_Y]   = IEC6205621_ACK_AND_OPTION_SELECT__value_of_Y__data_readout;
-    ackMessage[IEC6205621_ACK_AND_OPTION_SELECT__place_of_CR]  = IEC6205621_ACK_AND_OPTION_SELECT__place_of_CR;
-    ackMessage[IEC6205621_ACK_AND_OPTION_SELECT__place_of_LF]  = IEC6205621_ACK_AND_OPTION_SELECT__place_of_LF;
+    ackMessage[IEC6205621_ACK_AND_OPTION_SELECT__place_of_CR]  = IEC6205621_ACK_AND_OPTION_SELECT__value_of_CR;
+    ackMessage[IEC6205621_ACK_AND_OPTION_SELECT__place_of_LF]  = IEC6205621_ACK_AND_OPTION_SELECT__value_of_LF;
 
     *sizeOfFilledBufferInBytes = IEC6205621_ACK_AND_OPTION_SELECT_SIZE_IN_BYTES;
     for(bufferIndex = 0u; bufferIndex < *sizeOfFilledBufferInBytes; bufferIndex++)
@@ -55,7 +55,7 @@ void RTE_CommunicationProtocolParser_FillBufferWithAckAndDataReadoutRequestMessa
 
 uint8_t RTE_CommunicationProtocolParser_GetBaudRateValueCharacterInHexFromIdString(uint8_t *idString, uint16_t sizeOfIdStringInBytes)
 {
-    uint8_t baudRateCharacter = 0u;
+    uint8_t baudRateCharacter = '0';
 
     if(IEC6205621_METER_ID__place_of_BaudRateCharacter < sizeOfIdStringInBytes )
     {
