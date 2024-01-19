@@ -44,10 +44,28 @@
 		<Test id="14">
 			<Name>test/01_DRV/TestDRV_Uart.c::test_GivenRxEnabled_WhenDisleRxalled_ThenExpectDisableRx</Name>
 		</Test>
+		<Test id="15">
+			<Name>test/02_RTE/TestRTE_Communication.c::test_GivenNothing_WhenCommunicationInitCalled_ThenExpectInitUartDriver</Name>
+		</Test>
+		<Test id="16">
+			<Name>test/02_RTE/TestRTE_Communication.c::test_GivenNothing_WhenSendMessageToMeterDeviceCalled_ThenExpectSetDataAndStartTx</Name>
+		</Test>
+		<Test id="17">
+			<Name>test/02_RTE/TestRTE_Communication.c::test_GivenNothing_WhenListenToMeterDeviceAnswerCalled_ThenExpectSetBuffersAndTerminatingCondition</Name>
+		</Test>
+		<Test id="18">
+			<Name>test/02_RTE/TestRTE_Communication.c::test_GivenNothing_WhenSetMeterDataRxBaudRateCalled_ThenExpectSetBaudRate</Name>
+		</Test>
+		<Test id="19">
+			<Name>test/02_RTE/TestRTE_Communication.c::test_GivenNothing_WhenResetMeterDataRxBaudRateCalled_ThenExpectResetBaudRateTo300</Name>
+		</Test>
+		<Test id="20">
+			<Name>test/02_RTE/TestRTE_CommunicationProtocolParser.c::test_Given_WhenCommunicationInitCalled_ThenExpect</Name>
+		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>
 	<Statistics>
-		<Tests>14</Tests>
+		<Tests>20</Tests>
 		<Ignores>0</Ignores>
 		<FailuresTotal>0</FailuresTotal>
 		<Errors>0</Errors>
